@@ -149,28 +149,28 @@ Header('Location: table_display.php');
 
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Cooling of Hides and Skins</title>
 </head>
 <body>
-    <form action="" method="get"  name="form">
-        <p>Conductivity:<br />
+    <form action="" method="get"  name="slab">
+        <p>Conductivity:</p><br />
         <input type="text" name="lamda" size="35" value="0.591" />[W &deg;C<sup>-1</sup> m<sup>-1</sup>]<br /><br />
-        Volumetric Heat Capacity:<br />
+        <p>Volumetric Heat Capacity:</p><br />
         <input type="text" name="C" size="35" value="4200000" />[J &deg;C<sup>-1</sup> m<sup>-3</sup>]<br /><br />
-        Thickness:<br />
+        <p>Thickness:</p><br />
         <input type="text" name="L" size="35" value="0.01" />[m]<br /><br />
-        Heat transfer Coefficeint:<br />
+        <p>Heat transfer Coefficeint:</p><br />
         <input type="text" name="h" size="35" value="600" />[W &deg;C<sup>-1</sup> m<sup>-2</sup>]<br /><br />
-        Ambient Temperature:<br />
+        <p>Ambient Temperature:</p><br />
         <input type="text" name="Ta" size="35" value="10" />[&deg;C]<br /><br />
-        Inital Temperature:<br />
+        <p>Inital Temperature:</p><br />
         <input type="text" name="Ti" size="35" value="35.5" />[&deg;C]<br /><br />
-        Simulation Time:<br />
-        <input type="text" name="Simtime" size="35" value="500" />[s]<br /><br /></p>
-	 <input type="submit" value="submit" />
+        <p>Simulation Time:</p><br />
+        <input type="text" name="Simtime" size="35" value="500" />[s]<br /><br />
+	<input type="submit" value="submit" />
     </form>
 </body>
 </html>
