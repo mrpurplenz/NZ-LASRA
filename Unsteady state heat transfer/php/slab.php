@@ -155,22 +155,25 @@ Header('Location: table_display.php');
     <title>Cooling of Hides and Skins</title>
 </head>
 <body>
-    <form action="" method="get"  name="slab">
-        <p>Conductivity:</p><br />
-        <input type="text" name="lamda" size="35" value="0.591" />[W &deg;C<sup>-1</sup> m<sup>-1</sup>]<br /><br />
-        <p>Volumetric Heat Capacity:</p><br />
-        <input type="text" name="C" size="35" value="4200000" />[J &deg;C<sup>-1</sup> m<sup>-3</sup>]<br /><br />
-        <p>Thickness:</p><br />
-        <input type="text" name="L" size="35" value="0.01" />[m]<br /><br />
-        <p>Heat transfer Coefficeint:</p><br />
-        <input type="text" name="h" size="35" value="600" />[W &deg;C<sup>-1</sup> m<sup>-2</sup>]<br /><br />
-        <p>Ambient Temperature:</p><br />
-        <input type="text" name="Ta" size="35" value="10" />[&deg;C]<br /><br />
-        <p>Inital Temperature:</p><br />
-        <input type="text" name="Ti" size="35" value="35.5" />[&deg;C]<br /><br />
-        <p>Simulation Time:</p><br />
-        <input type="text" name="Simtime" size="35" value="500" />[s]<br /><br />
-	<input type="submit" value="submit" />
-    </form>
+	<form method="get" action=" ">
+		<fieldset>
+			<legend>Slab</legend>
+			<label for="Conductivity">Conductivity:</label><br />
+			<input type="text" name="lamda" id="lamda"  size="35" value="0.5512" /> [W &deg;C<sup>-1</sup> m<sup>-1</sup>] <br />
+			<label for="HeatCapacity">Volumetric Heat Capacity:</label><br />
+			<input type="text" name="C" id="C" size="35" value="4200000" /> [J &deg;C<sup>-1</sup> m<sup>-3</sup>]<br />
+			<label for="Thickness">Thickness:</label><br />
+			<input type="text" name="L" id="L" size="35" value="0.02" /> [m]<br />
+			<label for=" HeatTransfer">Heat transfer Coefficeint:</label><br />
+			<input type="text" name="h" id="h" size="35" value="65" /> [W &deg;C<sup>-1</sup> m<sup>-2</sup>]br />
+			<label for="AmbientTemperature">Ambient Temperature:</label><br />
+			<input type="text" name="Ta" id="Ta" size="35" value="41" /> [&deg;C]<br />
+			<label for="InitalTemperature">Inital Temperature:</label><br />
+			<input type="text" name="Ti" id="Ti" size="35" value="18" /> [&deg;C]<br />
+			<label for="ime">Simulation Time:</label><br />
+			<input type="text" name="Simtime" id=" Simtime " size="35" value="1000" /> [s]<br />
+			<input type="submit" value="submit" />
+		</fieldset>
+	<form>
 </body>
 </html>
