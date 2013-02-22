@@ -8,10 +8,10 @@
     $array = unserialize(urldecode($_SESSION['serialized_data']));
     echo "<table border=\"1\">";
     echo "<tr>";
-	echo  "<td>Time [s]</td>";
-	echo  "<td>Centre temperature [&deg;C]</td>";
-	echo  "<td>Surface temperature [&deg;C]</td>";
-	echo  "<td>Mass average temperature [&deg;C]</td>";
+	echo  "<th>Time [s]</th>";
+	echo  "<th>Centre temperature [&deg;C]</th>";
+	echo  "<th>Surface temperature [&deg;C]</th>";
+	echo  "<th>Mass average temperature [&deg;C]</th>";
     echo "</tr>";
     foreach($array as $value=>$row) {
 	echo "<tr>";
