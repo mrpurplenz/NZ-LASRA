@@ -159,17 +159,17 @@ Header('Location: table_display.php');
 		<fieldset>
 			<legend>Slab</legend>
 			<label for="Conductivity">Conductivity:</label><br />
-			<input type="text" name="lamda" id="lamda"  size="35" value="0.5512" /> [W &deg;C<sup>-1</sup> m<sup>-1</sup>] <br />
+			<input type="text" name="lamda" id="lamda"  size="35" value="0.47" /> [W &deg;C<sup>-1</sup> m<sup>-1</sup>] <br />
 			<label for="HeatCapacity">Volumetric Heat Capacity:</label><br />
-			<input type="text" name="C" id="C" size="35" value="4200000" /> [J &deg;C<sup>-1</sup> m<sup>-3</sup>]<br />
+			<input type="text" name="C" id="C" size="35" value="3700000" /> [J &deg;C<sup>-1</sup> m<sup>-3</sup>]<br />
 			<label for="Thickness">Thickness:</label><br />
-			<input type="text" name="L" id="L" size="35" value="0.02" /> [m]<br />
-			<label for=" HeatTransfer">Heat transfer coefficient:</label><br />
-			<input type="text" name="h" id="h" size="35" value="65" /> [W &deg;C<sup>-1</sup> m<sup>-2</sup>]<br />
+			<input type="text" name="L" id="L" size="35" value="0.07" /> [m]<br />
+			<label for="HeatTransfer">Heat transfer coefficient:</label><br />
+			<input type="text" name="h" id="h" size="35" value="100" /> [W &deg;C<sup>-1</sup> m<sup>-2</sup>]<br />
 			<label for="AmbientTemperature">Ambient Temperature:</label><br />
-			<input type="text" name="Ta" id="Ta" size="35" value="41" /> [&deg;C]<br />
+			<input type="text" name="Ta" id="Ta" size="35" value="15" /> [&deg;C]<br />
 			<label for="InitalTemperature">Inital Temperature:</label><br />
-			<input type="text" name="Ti" id="Ti" size="35" value="18" /> [&deg;C]<br />
+			<input type="text" name="Ti" id="Ti" size="35" value="35" /> [&deg;C]<br />
 			<label for="ime">Simulation Time:</label><br />
 			<input type="text" name="Simtime" id=" Simtime " size="35" value="1000" /> [s]<br />
 			<input type="submit" value="submit" />
