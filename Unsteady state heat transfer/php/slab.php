@@ -164,7 +164,7 @@ Header('Location: table_display.php');
 			<input type="text" name="C" id="C" size="35" value="4200000" /> [J &deg;C<sup>-1</sup> m<sup>-3</sup>]<br />
 			<label for="Thickness">Thickness:</label><br />
 			<input type="text" name="L" id="L" size="35" value="0.02" /> [m]<br />
-			<label for=" HeatTransfer">Heat transfer Coefficeint:</label><br />
+			<label for=" HeatTransfer">Heat transfer coefficient:</label><br />
 			<input type="text" name="h" id="h" size="35" value="65" /> [W &deg;C<sup>-1</sup> m<sup>-2</sup>]<br />
 			<label for="AmbientTemperature">Ambient Temperature:</label><br />
 			<input type="text" name="Ta" id="Ta" size="35" value="41" /> [&deg;C]<br />
