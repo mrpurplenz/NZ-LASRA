@@ -142,8 +142,8 @@ for ($n = 2; $n <= $N; $n++) {
 $_SESSION['serialized_data'] = urlencode(serialize($array));
 
 //to display results as table
-Header('Location: table_display.php');
-
+//Header('Location: table_display.php');
+Header('Location: graph_display.php');
 //to display results as graph
 //Header('Location: display.php');
 
