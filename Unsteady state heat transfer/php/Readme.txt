@@ -5,7 +5,10 @@ It was done so that online calculators of unsteady state heat transfer could be 
 They were prepared for NZ LASRA by Dr Richard Edmonds
 
 
-To run these php files you will need to copy them into a webserver running php5.0
+To run these php files you will need to copy them into a webserver running php5.0 and for graphiong you will need to enable GD_2 in your php.ini
+in ubuntu run
+sudo apt-get install php5-gd libgd2-xpm-dev
+sudo /etc/init.d/apache2 restart
 
 With your favourite subversion software checkout the three php files into your webserver
 
