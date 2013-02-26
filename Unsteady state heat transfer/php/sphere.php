@@ -209,7 +209,8 @@ for ($n = 2; $n <= $N; $n++) {
 $_SESSION['serialized_data'] = urlencode(serialize($array));
 
 //to display results as table
-Header('Location: table_display.php');
+//Header('Location: table_display.php');
+Header('Location: graph_display.php');
 
 //to display results as graph
 //Header('Location: display.php');
@@ -232,7 +233,7 @@ Header('Location: table_display.php');
 			<label for="Thickness">Thickness:</label><br />
 			<input type="text" name="L" id="L" size="35" value="0.02" /> [m]<br />
 			<label for=" HeatTransfer">Heat transfer Coefficeint:</label><br />
-			<input type="text" name="h" id="h" size="35" value="65" /> [W &deg;C<sup>-1</sup> m<sup>-2</sup>]br />
+			<input type="text" name="h" id="h" size="35" value="65" /> [W &deg;C<sup>-1</sup> m<sup>-2</sup>]<br />
 			<label for="AmbientTemperature">Ambient Temperature:</label><br />
 			<input type="text" name="Ta" id="Ta" size="35" value="41" /> [&deg;C]<br />
 			<label for="InitalTemperature">Inital Temperature:</label><br />
