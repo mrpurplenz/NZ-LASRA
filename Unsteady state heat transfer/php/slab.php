@@ -13,7 +13,7 @@
 
 if ($lamda){
     function sec($x) {
-//`   //Function of sec which is not avaliable natively to php
+	//Function of sec which is not avaliable natively to php
         $result=1/cos($x);
         return $result;
     }
@@ -24,7 +24,6 @@ if ($lamda){
 	$i = 1;
 	while ($i <= 1000):
 	    $root2=atan($Bi/$root1);
-//echo "first estimate of primary root is $root2 <br>";
 	    if ($root2 == $root1) {
 		$i=1000;
 	    } else {
@@ -52,7 +51,6 @@ if ($lamda){
                             $rootm=$root2;
                         }
                         $i++;
-//echo "$i <br>";
                 endwhile;
 		$root=$n*pi()+$rootm;
                 $result[]=$root;
@@ -63,7 +61,7 @@ if ($lamda){
   
   }
 
-//%Get simulation time information.
+    //%Get simulation time information.
     $Tinterval=$Simtime/$Tsteps;
     $Tspan=array();
     $Tspan[] = 0;
@@ -112,21 +110,12 @@ if ($lamda){
     }
 
     $array = Array();
-//for ($n = 1; $n <= $N; $n++) {
-//        $Tc=-$Yc[$n]*($Ta-$Ti)+($Ta);
-//        $Ts=-$Ys[$n]*($Ta-$Ti)+($Ta);
-//        $Tav=-$Yav[$n]*($Ta-$Ti)+($Ta);
-//        $array[$n][0] = $Tspan[$n];
-//        $array[$n][1] = $Tc;
-//        $array[$n][2] = $Ts;
-//        $array[$n][3] = $Tav;
-//}
         $array[1][0] = "0";
         $array[1][1] = $Ti;
         $array[1][2] = $Ti;
         $array[1][3] = $Ti;
-//$N1=$N+1;
-for ($n = 2; $n <= $N; $n++) {
+        
+    for ($n = 2; $n <= $N; $n++) {
 	$nm=$n-1;
         $Tc=-$Yc[$nm]*($Ta-$Ti)+($Ta);
         $Ts=-$Ys[$nm]*($Ta-$Ti)+($Ta);
@@ -135,17 +124,17 @@ for ($n = 2; $n <= $N; $n++) {
 	$array[$n][1] = $Tc;
 	$array[$n][2] = $Ts;
 	$array[$n][3] = $Tav;
-}
-//echo "this is the slab analytical solution php";
+    }
 //print_r($array);
 
+//encode and package data for receiving php
 $_SESSION['serialized_data'] = urlencode(serialize($array));
 
 //to display results as table
 //Header('Location: table_display.php');
-Header('Location: graph_display.php');
+
 //to display results as graph
-//Header('Location: display.php');
+Header('Location: graph_display.php');
 
 }
 ?>
