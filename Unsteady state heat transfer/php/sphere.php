@@ -1,54 +1,56 @@
 <?php session_start();
 
-    // Prepare simulation systm inputs
-    $lamda = $_GET["lamda"];
-    $C = $_GET["C"];
-    $L = $_GET["L"];
-    $J = 40;
-    $h = $_GET["h"];
-    $Ta = $_GET["Ta"];
-    $Ti = $_GET["Ti"];
-    $Simtime = $_GET["Simtime"];
-    $Tsteps = 1000;
+// Prepare simulation systm inputs
+$lamda = $_GET["lamda"];
+$C = $_GET["C"];
+$L = $_GET["L"];
+$J = 40;
+$h = $_GET["h"];
+$Ta = $_GET["Ta"];
+$Ti = $_GET["Ti"];
+$Simtime = $_GET["Simtime"];
+$Tsteps = 1000;
 
 if ($lamda){
+	
+    //Sec not avaiable to native php
     function sec($x) {
-        //Function of sec which is not avaliable natively to php
         $result=1/cos($x);
         return $result;
     }
 
-   function fx($theta,$Bi,$M) {
-	$result=(atan((pi()*$M+$theta)/($Bi-1))+$theta);
+    //transcendental function part of analytic solution
+    function fx($theta,$Bi,$M) {
+        $result=(atan((pi()*$M+$theta)/($Bi-1))+$theta);
 	return $result;
-   }
+    }
 
-   function fdashx($theta,$Bi,$M) {
-        $result=(1/(((($theta + pi()*$M)*($theta + pi()*$M))/(($Bi - 1)*($Bi - 1)) + 1)*($Bi - 1)) + 1);
-        return $result;
-   }
+    //First derivative of transcendental function of analytic solution
+    function fdashx($theta,$Bi,$M) {
+	$result=(1/(((($theta + pi()*$M)*($theta + pi()*$M))/(($Bi - 1)*($Bi - 1)) + 1)*($Bi - 1)) + 1);
+	return $result;
+    }
 
+    //determine roots of transcendental function part of analytic solution 
     function SphereBm($Bi,$M) {
     $result=array();
-//    echo "Biot is $Bi <br>";
+
 	if ($Bi == 1){
-    	   $m=1;
-	   $root=pi()/2;
-//	   echo "root is $root <br>";
-	   $result[]=$root;
-	   while ($m <= $M):
-        	$m++;
+        //Solve special case of Bi=1	
+    	    $m=1;
+	    $root=pi()/2;
+	    $result[]=$root;
+	    while ($m <= $M):
+		$m++;
 		$root=$root+pi();
-//	        echo "root is $root <br>";
 	   	$result[]=$root;
-		//Betam(m,1)=Betam(m-1,1)+pi();
 	   endwhile;
 	} else {
 	   $m=0;
 	   while ($m <= $M):
 		$m++;
+		//Note root no. solution shift for Bi<1 vs Bi>1
         	if ($Bi < 1){
-		    //echo "Biot is less than 1 <br>";
             	    $n=$m-1;
             	} else {
             	    $n=$m;
@@ -58,21 +60,17 @@ if ($lamda){
         	$i=0;
         	while ($i < 1000):
 	    	    if ($root==$rootnext) {
+			//Stop if solution error is less than operating precision
 			$i=1000;
 	    	    }
             	    $root=$rootnext;
             	    //newton-Raphson formula
             	    $fxval=fx($root,$Bi,$n);
 		    $fdashxval=fdashx($root,$Bi,$n);
-//		    echo "The $n fx val is $fxval <br>";
-//		    echo "The $n fdashx val is $fdashxval <br>";
 		    $rootnext=$root-$fxval/$fdashxval;
-//		    echo "$root <br>";
-//		    echo "$rootnext <br>";
             	    $i++;
 		endwhile;
 		$resultroot=pi()*$n+$root;
-//		echo "root is $resultroot <br>";
         	$result[]=$resultroot;
 	    endwhile;
 	}
@@ -101,11 +99,6 @@ if ($lamda){
                 $rootm=$estc;
         	$i=1;
                 while ($i <= 1000):
-//echo "Bi is $Bi <br>";
-//echo "m is $m <br>";
-//echo "n is $n <br>";
-//echo "current rootm is $rootm <br>";
-//echo "first estimate of second root term is $root2<br>";
                     $root2=atan($Bi/($n*pi()+$rootm));
                         if ($root2 == $rootm) {
                             $i=1000;
@@ -121,7 +114,7 @@ if ($lamda){
         return $result;
   }
 
-    //%Get simulation time information.
+    //Get simulation time information.
     $Tinterval=$Simtime/$Tsteps;
     $Tspan=array();
     $Tspan[] = 0;
@@ -132,20 +125,25 @@ if ($lamda){
     $N=count($t);
     $R=$L/2;
 
+    //prepare fourrier number
     $Fo=array();
     foreach ($t as $time_point) {
         $Fo[] = $time_point*$lamda/($C*$R*$R);
     }
     $Bi=$h*$R/$lamda;
     $M=100;
+    
+    //Calculate roots of b*cot(b)+(1-Bi)=0
     $betam = SphereBm($Bi,$M);
-
+    
+    //Prepare arrays of analytical solutions
     $Yc=array();
     $Ys=array();
     $Yav=array();
     $Yc[]=1;
     $Ys[]=1;
     $Yav[]=1;
+    
     //Analytical solution for the third kind of boundary condition
     for ($n = 2; $n <= $N; $n++) {
         $Yctemp=0;
@@ -154,14 +152,9 @@ if ($lamda){
         for ($m = 1; $m <= $M; $m++) {
 	    $betamm=$betam[$m-1];
             $Fon=$Fo[$n-1];
- //           $Ycterm=(2*$Bi*cos(0)*sec($betamm))/(($Bi*($Bi+1)+$betamm*$betamm))*(exp(-$betamm*$betamm*$Fon));
- //           $Ysterm=2*$Bi*cos($betamm)*sec($betamm)/($Bi*($Bi+1)+$betamm*$betamm)*exp(-$betamm*$betamm*$Fon);
- //           $Yavterm=2*$Bi*$Bi/($betamm*$betamm*($Bi*($Bi+1)+$betamm*$betamm))*exp(-$betamm*$betamm*$Fon);
-$Ycterm=(2*$Bi*(10000)*($betamm*$betamm+(($Bi-1)*($Bi-1)))/(($betamm*$betamm)*($betamm*$betamm+($Bi-1)*$Bi)))*sin($betamm)*sin($betamm*(1/10000))*exp(-($betamm*$betamm)*$Fon);
-$Ysterm=2*$Bi*($betamm*$betamm+($Bi-1)*($Bi-1))/(($betamm*$betamm)*($betamm*$betamm+($Bi-1)*$Bi))*sin($betamm)*sin($betamm)*exp(-($betamm*$betamm)*$Fon);
-//	    $Ysterm=2*$Bi*cos($betamm)*sec($betamm)/($Bi*($Bi+1)+$betamm*$betamm)*exp(-$betamm*$betamm*$Fon);
-$Yavterm=6*($Bi*$Bi)/($betamm*$betamm*($betamm*$betamm+$Bi*($Bi-1)))*exp(-($betamm*$betamm)*$Fon);
-//	    $Yavterm=2*$Bi*$Bi/($betamm*$betamm*($Bi*($Bi+1)+$betamm*$betamm))*exp(-$betamm*$betamm*$Fon);
+	    $Ycterm=(2*$Bi*(10000)*($betamm*$betamm+(($Bi-1)*($Bi-1)))/(($betamm*$betamm)*($betamm*$betamm+($Bi-1)*$Bi)))*sin($betamm)*sin($betamm*(1/10000))*exp(-($betamm*$betamm)*$Fon);
+	    $Ysterm=2*$Bi*($betamm*$betamm+($Bi-1)*($Bi-1))/(($betamm*$betamm)*($betamm*$betamm+($Bi-1)*$Bi))*sin($betamm)*sin($betamm)*exp(-($betamm*$betamm)*$Fon);
+	    $Yavterm=6*($Bi*$Bi)/($betamm*$betamm*($betamm*$betamm+$Bi*($Bi-1)))*exp(-($betamm*$betamm)*$Fon);
             $Yctemp=$Yctemp+$Ycterm;
             $Ystemp=$Ystemp+$Ysterm;
             $Yavtemp=$Yavtemp+$Yavterm;
@@ -190,7 +183,6 @@ for ($n = 2; $n <= $N; $n++) {
 	$array[$n][2] = $Ts;
 	$array[$n][3] = $Tav;
 }
-//print_r($array);
 
 //encode and package data for display php
 $_SESSION['serialized_data'] = urlencode(serialize($array));
