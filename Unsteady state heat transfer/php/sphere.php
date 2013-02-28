@@ -9,7 +9,8 @@ $h = $_GET["h"];
 $Ta = $_GET["Ta"];
 $Ti = $_GET["Ti"];
 $Simtime = $_GET["Simtime"];
-$Tsteps = 1000;
+$Display_option = $_GET[""];
+$Tsteps = 100;
 
 if ($lamda){
 
