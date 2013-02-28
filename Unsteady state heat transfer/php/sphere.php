@@ -220,7 +220,7 @@ Header('Location: graph_display.php');
 			<label for="ime">Simulation Time:</label><br />
 			<input type="text" name="Simtime" id=" Simtime " size="35" value="1000" /> [s]<br />
                         <label for="display_type">Display type:</label><br />
-			<select>
+			<select name="display_type" id="display_type">
 			  <option value="table_display">Table display</option>
 			  <option value="graphical_display">Graphical display</option>
 			</select>
