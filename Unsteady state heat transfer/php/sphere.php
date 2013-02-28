@@ -9,7 +9,7 @@ $h = $_GET["h"];
 $Ta = $_GET["Ta"];
 $Ti = $_GET["Ti"];
 $Simtime = $_GET["Simtime"];
-$Display_option = $_GET[""];
+$display_type = $_GET["display_type"];
 $Tsteps = 100;
 
 if ($lamda){
@@ -188,12 +188,13 @@ for ($n = 2; $n <= $N; $n++) {
 //encode and package data for display php
 $_SESSION['serialized_data'] = urlencode(serialize($array));
 
-//to display results as table
-//Header('Location: table_display.php');
-
-//to display results as graph
-Header('Location: graph_display.php');
-
+if($display_type == "table_display"){
+    //to display results as table
+    Header('Location: table_display.php');
+} elseif ($display_type == "graphical_display"){
+    //to display results as graph
+    Header('Location: graph_display.php');
+}
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
