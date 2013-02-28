@@ -12,7 +12,7 @@ $Simtime = $_GET["Simtime"];
 $Tsteps = 1000;
 
 if ($lamda){
-	
+
     //Sec not avaiable to native php
     function sec($x) {
         $result=1/cos($x);
@@ -218,7 +218,13 @@ Header('Location: graph_display.php');
 			<input type="text" name="Ti" id="Ti" size="35" value="18" /> [&deg;C]<br />
 			<label for="ime">Simulation Time:</label><br />
 			<input type="text" name="Simtime" id=" Simtime " size="35" value="1000" /> [s]<br />
-			<input type="submit" value="submit" />
+                        <label for="display_type">Display type:</label><br />
+			<select>
+			  <option value="table_display">Table display</option>
+			  <option value="graphical_display">Graphical display</option>
+			</select>
+			<br>
+                        <input type="submit" value="submit" />
 		</fieldset>
 	</form>
 </body>
