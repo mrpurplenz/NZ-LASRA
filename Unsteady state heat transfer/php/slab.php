@@ -9,7 +9,8 @@
     $Ta = $_GET["Ta"];
     $Ti = $_GET["Ti"];
     $Simtime = $_GET["Simtime"];
-    $Tsteps = 1000;
+    $display_type = $_GET["display_type"];
+    $Tsteps = 100;
 
 if ($lamda){
     function sec($x) {
@@ -130,13 +131,15 @@ if ($lamda){
 //encode and package data for receiving php
 $_SESSION['serialized_data'] = urlencode(serialize($array));
 
-//to display results as table
-//Header('Location: table_display.php');
-
-//to display results as graph
-Header('Location: graph_display.php');
-
+if($display_type == "table_display"){
+    //to display results as table
+    Header('Location: table_display.php');
+} elseif ($display_type == "graphical_display"){
+    //to display results as graph
+    Header('Location: graph_display.php');
 }
+}
+
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -161,6 +164,12 @@ Header('Location: graph_display.php');
 			<input type="text" name="Ti" id="Ti" size="35" value="35" /> [&deg;C]<br />
 			<label for="ime">Simulation Time:</label><br />
 			<input type="text" name="Simtime" id=" Simtime " size="35" value="1000" /> [s]<br />
+                        <label for="display_type">Display type:</label><br />
+                        <select name="display_type" id="display_type">
+                          <option value="table_display">Table display</option>
+                          <option value="graphical_display">Graphical display</option>
+                        </select>
+                        <br>
 			<input type="submit" value="submit" />
 		</fieldset>
 	<form>
