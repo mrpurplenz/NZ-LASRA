@@ -5,22 +5,22 @@
 </head>
 <body>
 <?php session_start();
-    $array = unserialize(urldecode($_SESSION['serialized_data']));
-    echo "<table border=\"1\">";
-    echo "<tr>";
-	echo  "<th>Time [s]</th>";
-	echo  "<th>Centre temperature [&deg;C]</th>";
-	echo  "<th>Surface temperature [&deg;C]</th>";
-	echo  "<th>Mass average temperature [&deg;C]</th>";
-    echo "</tr>";
-    foreach($array as $value=>$row) {
+	$array = unserialize(urldecode($_SESSION['serialized_data']));
+	echo "<table border=\"1\">";
 	echo "<tr>";
-	foreach($row as $value2=>$row2){
-            echo "<td>" . $row2 . "</td>";
-	}
+	echo "<th>Time [s]</th>";
+	echo "<th>Centre temperature [&deg;C]</th>";
+	echo "<th>Surface temperature [&deg;C]</th>";
+	echo "<th>Mass average temperature [&deg;C]</th>";
 	echo "</tr>";
-    }
-    echo "</table>";
+	foreach($array as $value=>$row) {
+		echo "<tr>";
+		foreach($row as $value2=>$row2){
+			echo "<td>" . $row2 . "</td>";
+		}
+		echo "</tr>";
+	}
+	echo "</table>";
 ?>
 </body>
 </html>
