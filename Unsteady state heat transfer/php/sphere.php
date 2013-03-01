@@ -10,7 +10,7 @@ $Ta = $_GET["Ta"];
 $Ti = $_GET["Ti"];
 $Simtime = $_GET["Simtime"];
 $display_type = $_GET["display_type"];
-$Tsteps = 100;
+$Tsteps = 1000;
 
 if ($lamda){
 	//Sec not avaiable to native php
@@ -193,6 +193,7 @@ if ($lamda){
 		Header('Location: graph_display.php');
 	}
 }
+//var_dump($array);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

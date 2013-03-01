@@ -10,7 +10,7 @@
     $Ti = $_GET["Ti"];
     $Simtime = $_GET["Simtime"];
     $display_type = $_GET["display_type"];
-    $Tsteps = 100;
+    $Tsteps = 1000;
 
 if ($lamda){
     function sec($x) {
