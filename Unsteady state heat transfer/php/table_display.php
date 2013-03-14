@@ -5,7 +5,9 @@
 </head>
 <body>
 <?php session_start();
+	//get encoded data
 	$array = unserialize(urldecode($_SESSION['serialized_data']));
+	//start table to display data points
 	echo "<table border=\"1\">";
 	echo "<tr>";
 	echo "<th>Time [s]</th>";
@@ -13,6 +15,7 @@
 	echo "<th>Surface temperature [&deg;C]</th>";
 	echo "<th>Mass average temperature [&deg;C]</th>";
 	echo "</tr>";
+	//cycles through data points and displying them in rows
 	foreach($array as $value=>$row) {
 		echo "<tr>";
 		foreach($row as $value2=>$row2){
