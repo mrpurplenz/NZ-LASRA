@@ -115,7 +115,7 @@ if ($lamda){
         $array[1][1] = $Ti;
         $array[1][2] = $Ti;
         $array[1][3] = $Ti;
-        
+
     for ($n = 2; $n <= $N; $n++) {
 	$nm=$n-1;
         $Tc=-$Yc[$nm]*($Ta-$Ti)+($Ta);
