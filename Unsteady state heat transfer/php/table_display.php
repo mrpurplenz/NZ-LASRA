@@ -13,6 +13,7 @@
 	echo "<th>Surface temperature [&deg;C]</th>";
 	echo "<th>Mass average temperature [&deg;C]</th>";
 	echo "</tr>";
+//var_dump($array);
 	foreach($array as $value=>$row) {
 		echo "<tr>";
 		foreach($row as $value2=>$row2){
