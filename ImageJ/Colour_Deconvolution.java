@@ -73,7 +73,7 @@ public class Colour_Deconvolution implements PlugIn {
 
 		GenericDialog gd = new GenericDialog("Colour Deconvolution 1.3", IJ.getInstance());
 		//gd.addMessage("Select subtractive colour model");
-		String [] stain={"From ROI", "H&E", "H DAB","FastRed FastBlue DAB","Methyl Green DAB", "H&E DAB", "H AEC","Azan-Mallory","Alcian blue & H","H PAS","RGB","CMY","Coopers", "User values"};
+		String [] stain={"From ROI", "H&E", "H DAB","FastRed FastBlue DAB","Methyl Green DAB", "H&E DAB", "H AEC","Azan-Mallory","Alcian blue & H","H PAS","RGB","CMY","Coopers", "Aitkenhead", "User values"};
 		gd.addChoice("Vectors", stain, stain[0]);
 		gd.addCheckbox("Show matrices",false);
 
@@ -277,17 +277,31 @@ public class Colour_Deconvolution implements PlugIn {
 		}
 		if (myStain.equals("Coopers")){
 			//Elastin
-			MODx[0]= 0.5522027;
-			MODy[0]= 0.8119653;
-			MODz[0]= 0.18917565;
-			//Fast green
-			MODx[1]= 0.2575864;
-			MODy[1]= 0.11447651;
-			MODz[1]= 0.95945007;
+			MODx[0]= 0.54473263;
+			MODy[0]= 0.7869069;
+			MODz[0]= 0.28990325;
 			//Picric acid
-			MODx[2]= 0.9771833;
-			MODy[2]= 0.16912176;
-			MODz[2]= 0.12849388;
+			MODx[1]= 0.80162776;
+			MODy[1]= 0.1604388;
+			MODz[1]= 0.5758927;
+			//Fast green
+			MODx[2]= 0.99617416;
+			MODy[2]= 0.02460377;
+			MODz[2]= 0.083855525;
+		}
+		if (myStain.equals("Aitkenhead")){
+			//Sudan III & IV
+			MODx[0]= 0.06;
+			MODy[0]= 0.65;
+			MODz[0]= 0.75;
+			//Alcian Blue
+			MODx[1]= 0.99;
+			MODy[1]= 0.1;
+			MODz[1]= 0.03;
+			//Rest
+			MODx[2]= 0.55;
+			MODy[2]= 0.4;
+			MODz[2]= 0.73;
 		}
 		if (myStain.equals("User values")){
 			GenericDialog gd2 = new GenericDialog("User values", IJ.getInstance());
